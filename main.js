@@ -84,7 +84,7 @@ function submitModal(e) {
 
   closeModal();
   // Open email client (fallback since no backend)
-  window.location.href = `mailto:kitchensideal24@gmail.com?subject=Quote Request: ${service}&body=${msg}`;
+  window.location.href = `mailto:simunza@ideal-kitchenzm.com?subject=Quote Request: ${service}&body=${msg}`;
 }
 
 // ===== MAIN FORM SUBMIT =====
@@ -124,7 +124,7 @@ This request was submitted via the Ideal Kitchens website.`
   const subject = encodeURIComponent(`Quote Request: ${service} — ${fname} ${lname}`);
 
   // Open email
-  window.location.href = `mailto:kitchensideal24@gmail.com?subject=${subject}&body=${body}`;
+  window.location.href = `mailto:simunza@ideal-kitchenzm.com?subject=${subject}&body=${body}`;
 
   // Show success
   setTimeout(() => {

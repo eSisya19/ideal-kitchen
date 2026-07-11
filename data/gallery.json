@@ -1,0 +1,135 @@
+[
+  {
+    "title": "Beige Gloss Kitchen",
+    "caption": "L-shaped layout with marble splashback & flooring",
+    "large": true,
+    "order": "Kitchen Units",
+    "image": "data/uploads/gallery-01.jpg"
+  },
+  {
+    "title": "Modern Gloss Kitchen",
+    "caption": "Cream gloss units with American-style fridge",
+    "large": false,
+    "order": "Kitchen Units",
+    "image": "data/uploads/gallery-02.jpg"
+  },
+  {
+    "title": "Red Lacquer Kitchen",
+    "caption": "Maroon & white lacquer with black granite tops",
+    "large": true,
+    "order": "Kitchen Units",
+    "image": "data/uploads/gallery-03.jpg"
+  },
+  {
+    "title": "Luxury Island Kitchen",
+    "caption": "Open-plan white island kitchen with marble worktop",
+    "large": true,
+    "order": "Kitchen Units",
+    "image": "data/uploads/gallery-04.jpg"
+  },
+  {
+    "title": "Melamine Wood Kitchen",
+    "caption": "U-shaped wood-tone units with black granite",
+    "large": false,
+    "order": "Kitchen Units",
+    "image": "data/uploads/gallery-05.jpg"
+  },
+  {
+    "title": "Sliding Wardrobe",
+    "caption": "Mahogany sliding wardrobe with overhead storage",
+    "large": false,
+    "order": "Wardrobes",
+    "image": "data/uploads/gallery-06.jpg"
+  },
+  {
+    "title": "Built-in Wardrobe",
+    "caption": "Two-tone wood & black with open shelving",
+    "large": false,
+    "order": "Wardrobes",
+    "image": "data/uploads/gallery-07.jpg"
+  },
+  {
+    "title": "Glass Staircase Guider",
+    "caption": "Tiled steps with frameless glass balustrade",
+    "large": false,
+    "order": "Metal Fabrication",
+    "image": "data/uploads/gallery-08.jpg"
+  },
+  {
+    "title": "Home Bar Counter",
+    "caption": "Custom timber bar counter with stools",
+    "large": true,
+    "order": "Commercial Counters & Furniture",
+    "image": "data/uploads/gallery-09.jpg"
+  },
+  {
+    "title": "External Geyser & Pipework",
+    "caption": "Wall-mounted geyser & hot/cold pipe run",
+    "large": false,
+    "order": "Plumbing Installations",
+    "image": "data/uploads/gallery-10.jpg"
+  },
+  {
+    "title": "Bathroom Basin & Urinal",
+    "caption": "Wall-mounted basin & urinal with chrome fittings",
+    "large": false,
+    "order": "Bathroom Units",
+    "image": "data/uploads/gallery-11.jpg"
+  },
+  {
+    "title": "Shower Installation",
+    "caption": "Rainfall shower head with chrome fittings",
+    "large": false,
+    "order": "Plumbing Installations",
+    "image": "data/uploads/gallery-12.jpg"
+  },
+  {
+    "title": "PPR Pipe Rough-in",
+    "caption": "Green PPR pipework with shut-off valves",
+    "large": false,
+    "order": "Plumbing Installations",
+    "image": "data/uploads/gallery-13.jpg"
+  },
+  {
+    "title": "Geyser Installation",
+    "caption": "Wall-mounted geyser with pipe connections",
+    "large": false,
+    "order": "Plumbing Installations",
+    "image": "data/uploads/gallery-14.jpg"
+  },
+  {
+    "title": "Underground Drainage",
+    "caption": "Drainage pipe trench & slab layout",
+    "large": false,
+    "order": "Plumbing Installations",
+    "image": "data/uploads/gallery-15.jpg"
+  },
+  {
+    "title": "Luxury Bathtub",
+    "caption": "Inset bathtub with panoramic garden windows",
+    "large": true,
+    "order": "Bathroom Units",
+    "image": "data/uploads/gallery-16.jpg"
+  },
+  {
+    "title": "Commercial Urinals",
+    "caption": "Row of wall-mounted commercial-grade urinals",
+    "large": false,
+    "order": "Bathroom Units",
+    "image": "data/uploads/gallery-17.jpg"
+  },
+  {
+    "title": "Commercial Toilet Install",
+    "caption": "Multi-cubicle WC installation in progress",
+    "large": false,
+    "order": "Plumbing Installations",
+    "image": "data/uploads/gallery-18.jpg"
+  },
+  {
+    "title": "Fire Safety System",
+    "caption": "Fire hose reel & extinguisher wall installation",
+    "large": false,
+    "order": "Plumbing Installations",
+    "image": "data/uploads/gallery-19.jpg"
+  }
+]

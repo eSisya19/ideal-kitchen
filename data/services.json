@@ -1,0 +1,106 @@
+[
+  {
+    "num": "01",
+    "title": "Kitchen Units",
+    "desc": "Lacquered, PVC, and Melamine finishes. High-gloss or matte. Custom colours and granite worktops.",
+    "tags": [
+      "Lacquer",
+      "PVC",
+      "Melamine"
+    ],
+    "order": "Kitchen Units",
+    "icon": "<svg width=\"28\" height=\"28\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"2\" y=\"3\" width=\"20\" height=\"14\" rx=\"2\"/><line x1=\"8\" y1=\"21\" x2=\"16\" y2=\"21\"/><line x1=\"12\" y1=\"17\" x2=\"12\" y2=\"21\"/></svg>",
+    "image": "data/uploads/service-01.jpg"
+  },
+  {
+    "num": "02",
+    "title": "Wardrobes",
+    "desc": "Built-in and free-standing options with frosted, glass, or panel sliding doors. Any finish, any size.",
+    "tags": [
+      "Built-in",
+      "Free-standing",
+      "Sliding"
+    ],
+    "order": "Wardrobes",
+    "icon": "<svg width=\"28\" height=\"28\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"2\" y=\"2\" width=\"20\" height=\"20\" rx=\"2\"/><line x1=\"8\" y1=\"2\" x2=\"8\" y2=\"22\"/><line x1=\"16\" y1=\"2\" x2=\"16\" y2=\"22\"/><line x1=\"2\" y1=\"12\" x2=\"22\" y2=\"12\"/></svg>",
+    "image": "data/uploads/service-02.jpg"
+  },
+  {
+    "num": "03",
+    "title": "Bathroom Units",
+    "desc": "Vanity units, toilet enclosures, and mirror cabinets in lacquer and moisture-resistant finishes.",
+    "tags": [
+      "Vanity",
+      "Mirror",
+      "Toilet Units"
+    ],
+    "order": "Bathroom Units",
+    "icon": "<svg width=\"28\" height=\"28\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 12h16\"/><path d=\"M4 12a8 8 0 0 1 16 0\"/><path d=\"M6 12v6a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-6\"/><line x1=\"12\" y1=\"2\" x2=\"12\" y2=\"4\"/></svg>",
+    "image": "data/uploads/service-03.jpg"
+  },
+  {
+    "num": "04",
+    "title": "Metal Fabrication",
+    "desc": "Sliding gates, metal fencing, tank stands, staircase guiders in granite and stainless steel.",
+    "tags": [
+      "Gates",
+      "Fencing",
+      "Steel"
+    ],
+    "order": "Metal Fabrication",
+    "icon": "<svg width=\"28\" height=\"28\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"3\"/><path d=\"M19.07 4.93a10 10 0 0 1 0 14.14\"/><path d=\"M4.93 4.93a10 10 0 0 0 0 14.14\"/><line x1=\"12\" y1=\"2\" x2=\"12\" y2=\"4\"/><line x1=\"12\" y1=\"20\" x2=\"12\" y2=\"22\"/><line x1=\"2\" y1=\"12\" x2=\"4\" y2=\"12\"/><line x1=\"20\" y1=\"12\" x2=\"22\" y2=\"12\"/></svg>",
+    "image": "data/uploads/service-04.jpg"
+  },
+  {
+    "num": "05",
+    "title": "Aluminium Windows & Doors",
+    "desc": "Custom aluminium windows, doors, and partitions. Also Mukwa timber doors and rosewood products.",
+    "tags": [
+      "Windows",
+      "Doors",
+      "Partitions"
+    ],
+    "order": "Aluminium Windows & Doors",
+    "icon": "<svg width=\"28\" height=\"28\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"2\"/><line x1=\"9\" y1=\"3\" x2=\"9\" y2=\"21\"/><path d=\"M13 8h4\"/><path d=\"M13 12h4\"/><path d=\"M13 16h4\"/></svg>",
+    "image": "data/uploads/service-05.jpg"
+  },
+  {
+    "num": "06",
+    "title": "Plumbing Installations",
+    "desc": "Full residential and commercial plumbing — sinks, geysers, pipe-work, bathroom and kitchen fit-outs.",
+    "tags": [
+      "Residential",
+      "Commercial",
+      "Geysers"
+    ],
+    "order": "Plumbing Installations",
+    "icon": "<svg width=\"28\" height=\"28\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z\"/></svg>",
+    "image": "data/uploads/service-06.jpg"
+  },
+  {
+    "num": "07",
+    "title": "Interior Design Consultancy",
+    "desc": "Space planning, colour schemes, 3D visualisations, and full fit-out design for any room or building.",
+    "tags": [
+      "Space Planning",
+      "3D Design",
+      "Colour"
+    ],
+    "order": "Interior Design Consultancy",
+    "icon": "<svg width=\"28\" height=\"28\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"13.5\" cy=\"6.5\" r=\".5\" fill=\"currentColor\"/><circle cx=\"17.5\" cy=\"10.5\" r=\".5\" fill=\"currentColor\"/><circle cx=\"8.5\" cy=\"7.5\" r=\".5\" fill=\"currentColor\"/><circle cx=\"6.5\" cy=\"12.5\" r=\".5\" fill=\"currentColor\"/><path d=\"M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z\"/></svg>",
+    "image": "data/uploads/service-07.jpg"
+  },
+  {
+    "num": "08",
+    "title": "Commercial Counters & Furniture",
+    "desc": "Bar counters, reception desks, office workstations, school desks, garden metal furniture sets.",
+    "tags": [
+      "Bar",
+      "Office",
+      "Garden"
+    ],
+    "order": "Commercial Counters & Furniture",
+    "icon": "<svg width=\"28\" height=\"28\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"2\" y=\"7\" width=\"20\" height=\"14\" rx=\"2\"/><path d=\"M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2\"/><line x1=\"12\" y1=\"12\" x2=\"12\" y2=\"16\"/><line x1=\"10\" y1=\"14\" x2=\"14\" y2=\"14\"/></svg>",
+    "image": "data/uploads/service-08.jpg"
+  }
+]

@@ -224,6 +224,8 @@ body { font-family: var(--font-body); background: var(--warm-white); color: var(
 .footer__links a { display: block; color: rgba(255,255,255,0.55); font-size: 0.85rem; text-decoration: none; margin-bottom: 0.5rem; transition: color 0.2s; }
 .footer__links a:hover { color: var(--red); }
 .footer__bottom { text-align: center; color: rgba(255,255,255,0.2); font-size: 0.75rem; line-height: 2; }
+.footer__admin { display: inline-block; margin-top: 1rem; padding: 0.5rem 1.25rem; border: 1px solid rgba(255,255,255,0.18); border-radius: var(--radius); color: rgba(255,255,255,0.55); font-size: 0.78rem; letter-spacing: 0.04em; text-decoration: none; transition: all 0.2s; }
+.footer__admin:hover { border-color: var(--red); color: var(--red); }
 
 /* MODAL */
 .modal { position: fixed; inset: 0; z-index: 2000; display: flex; align-items: center; justify-content: center; pointer-events: none; opacity: 0; transition: opacity 0.3s; }
@@ -415,10 +417,11 @@ img, svg, video { max-width: 100%; height: auto; }
       <span>Ideal Kitchens</span>
     </a>
     <ul class="nav__links">
-      <li><a href="index.html#about">About</a></li>
-      <li><a href="index.html#services">Services</a></li>
-      <li><a href="index.html#gallery">Gallery</a></li>
-      <li><a href="index.html#why-us">Why Us</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="news.html">News</a></li>
+      <li><a href="whyus.html">Why Us</a></li>
       <li><a href="contact.html" style="color:var(--red)">Contact</a></li>
       <li><a href="#order" class="nav__cta">Order Now</a></li>
     </ul>
@@ -428,10 +431,11 @@ img, svg, video { max-width: 100%; height: auto; }
   <!-- MOBILE MENU -->
   <div class="mobile-menu" id="mobileMenu">
     <ul>
-      <li><a href="index.html#about" class="mm-link">About</a></li>
-      <li><a href="index.html#services" class="mm-link">Services</a></li>
-      <li><a href="index.html#gallery" class="mm-link">Gallery</a></li>
-      <li><a href="index.html#why-us" class="mm-link">Why Us</a></li>
+      <li><a href="about.html" class="mm-link">About</a></li>
+      <li><a href="services.html" class="mm-link">Services</a></li>
+      <li><a href="gallery.html" class="mm-link">Gallery</a></li>
+      <li><a href="news.html" class="mm-link">News</a></li>
+      <li><a href="whyus.html" class="mm-link">Why Us</a></li>
       <li><a href="contact.html" class="mm-link">Contact</a></li>
       <li><a href="#order" class="mm-link">Order Now</a></li>
     </ul>
@@ -457,7 +461,7 @@ img, svg, video { max-width: 100%; height: auto; }
             <span class="contact__ico icon">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
             </span>
-            <a href="mailto:kitchensideal24@gmail.com">kitchensideal24@gmail.com</a>
+            <a href="mailto:simunza@ideal-kitchenzm.com">simunza@ideal-kitchenzm.com</a>
           </div>
           <div class="contact__item">
             <span class="contact__ico icon">
@@ -591,7 +595,7 @@ img, svg, video { max-width: 100%; height: auto; }
           <p>Your quote request has been received. Our team will contact you within 24 hours.</p>
           <p class="success-contact">You can also reach us directly at:<br/>
             <a href="tel:+260967864650">+260 967 864 650</a> &nbsp;|&nbsp;
-            <a href="mailto:kitchensideal24@gmail.com">kitchensideal24@gmail.com</a>
+            <a href="mailto:simunza@ideal-kitchenzm.com">simunza@ideal-kitchenzm.com</a>
           </p>
           <div class="success-wa">
             <p class="success-wa__title">Want a faster reply? Call us or send us a text on WhatsApp:</p>
@@ -624,18 +628,19 @@ img, svg, video { max-width: 100%; height: auto; }
         </div>
         <div class="footer__links">
           <h5>Services</h5>
-          <a href="index.html#services">Kitchen Units</a>
-          <a href="index.html#services">Wardrobes</a>
-          <a href="index.html#services">Bathroom Units</a>
-          <a href="index.html#services">Metal Fabrication</a>
-          <a href="index.html#services">Plumbing</a>
-          <a href="index.html#services">Interior Design</a>
+          <a href="services.html">Kitchen Units</a>
+          <a href="services.html">Wardrobes</a>
+          <a href="services.html">Bathroom Units</a>
+          <a href="services.html">Metal Fabrication</a>
+          <a href="services.html">Plumbing</a>
+          <a href="services.html">Interior Design</a>
         </div>
         <div class="footer__links">
           <h5>Company</h5>
-          <a href="index.html#about">About Us</a>
-          <a href="index.html#gallery">Gallery</a>
-          <a href="index.html#why-us">Why Choose Us</a>
+          <a href="about.html">About Us</a>
+          <a href="gallery.html">Gallery</a>
+          <a href="news.html">News</a>
+          <a href="whyus.html">Why Choose Us</a>
           <a href="contact.html">Contact Us</a>
           <a href="#order">Get a Quote</a>
         </div>
@@ -643,12 +648,13 @@ img, svg, video { max-width: 100%; height: auto; }
           <h5>Contact</h5>
           <a href="tel:+260967864650">+260 967 864 650</a>
           <a href="tel:+260979781964">+260 979 781 964</a>
-          <a href="mailto:kitchensideal24@gmail.com">kitchensideal24@gmail.com</a>
+          <a href="mailto:simunza@ideal-kitchenzm.com">simunza@ideal-kitchenzm.com</a>
         </div>
       </div>
       <div class="footer__bottom">
         <p>&copy; 2025 Ideal Kitchens Wardrobe &amp; Hardware Ltd. All rights reserved.</p>
         <p>Director: Choolwe Simuunza &middot; Banking: FNB PHI Lusaka Branch</p>
+        <a href="admin.html" class="footer__admin">&#128274; Admin &middot; Manage Site</a>
       </div>
     </div>
   </footer>
@@ -683,7 +689,7 @@ function submitOrder(e) {
 `QUOTE REQUEST — Ideal Kitchens Website\n\nName: ${fname} ${lname}\nPhone: ${phone}\nEmail: ${email || 'Not provided'}\nService: ${service}\nProperty Type: ${ptype}\nTimeline: ${timeline || 'Not specified'}\nLocation: ${location}\nPreferred Finish: ${finish}\n\nProject Details:\n${details || 'None provided.'}\n\n---\nSubmitted via the Ideal Kitchens website.`
   );
   const subject = encodeURIComponent(`Quote Request: ${service} — ${fname} ${lname}`);
-  window.location.href = `mailto:kitchensideal24@gmail.com?subject=${subject}&body=${body}`;
+  window.location.href = `mailto:simunza@ideal-kitchenzm.com?subject=${subject}&body=${body}`;
   setTimeout(() => {
     document.getElementById('orderForm').style.display = 'none';
     document.getElementById('orderSuccess').style.display = 'block';

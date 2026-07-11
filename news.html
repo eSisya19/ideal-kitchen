@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>News &amp; Updates — Ideal Kitchens Wardrobe &amp; Hardware Ltd</title>
+  <meta name="description" content="Latest news, completed projects and updates from Ideal Kitchens Wardrobe & Hardware Ltd." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+:root {
+  --red: #c1121f; --red-dark: #8b0000; --cream: #faf7f2; --warm-white: #fffdf9;
+  --charcoal: #1a1a1a; --mid: #4a4a4a; --light: #8a8a8a; --border: #e5ddd4;
+  --font-display: 'Cormorant Garamond', Georgia, serif; --font-body: 'DM Sans', system-ui, sans-serif;
+  --radius: 4px; --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body { font-family: var(--font-body); background: var(--warm-white); color: var(--charcoal); line-height: 1.6; overflow-x: hidden; }
+.container { max-width: 1180px; margin: 0 auto; padding: 0 1.5rem; }
+.label { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--red); display: block; margin-bottom: 0.75rem; }
+.section-title { font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 3.4rem); font-weight: 600; line-height: 1.1; margin-bottom: 1rem; }
+.section-sub { color: var(--mid); font-size: 1.05rem; max-width: 560px; margin: 0 auto; }
+.section-header { text-align: center; margin-bottom: 3.5rem; }
+
+/* NAV */
+.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; display: flex; align-items: center; justify-content: space-between; padding: 0.9rem 2.5rem; background: rgba(255,253,249,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); transition: border-color 0.3s, padding 0.3s; }
+.nav__logo { display: flex; align-items: center; gap: 0.6rem; font-family: var(--font-display); font-size: 1.2rem; font-weight: 600; color: var(--charcoal); text-decoration: none; cursor: pointer; }
+.nav__links { display: flex; gap: 2rem; list-style: none; }
+.nav__links a { font-size: 0.82rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; color: var(--mid); transition: color 0.2s; }
+.nav__links a:hover { color: var(--charcoal); }
+.nav__cta { color: var(--red) !important; border: 1.5px solid var(--red); padding: 0.45rem 1.1rem; border-radius: var(--radius); }
+.nav__cta:hover { background: var(--red) !important; color: #fff !important; }
+.nav__burger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+.nav__burger span { display: block; width: 24px; height: 2px; background: var(--charcoal); transition: var(--transition); }
+.mobile-menu { display: none; position: fixed; inset: 0; background: var(--warm-white); z-index: 999; flex-direction: column; justify-content: center; align-items: center; }
+.mobile-menu.open { display: flex; }
+.mobile-menu ul { list-style: none; text-align: center; }
+.mobile-menu li { margin: 1.4rem 0; }
+.mobile-menu a { font-family: var(--font-display); font-size: 2.4rem; font-weight: 600; color: var(--charcoal); text-decoration: none; }
+.mobile-menu a:hover { color: var(--red); }
+
+/* NEWS */
+.news { padding: 9rem 0 6rem; background: var(--cream); min-height: 100vh; }
+.news__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+.news-card { background: #fff; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.news-card:hover { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(0,0,0,0.08); }
+.news-card__img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; background: #ece5db; display: block; }
+.news-card__body { padding: 1.75rem; display: flex; flex-direction: column; flex: 1; }
+.news-card__meta { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--light); }
+.news-card__cat { color: var(--red); font-weight: 500; }
+.news-card__title { font-family: var(--font-display); font-size: 1.55rem; font-weight: 600; line-height: 1.2; margin-bottom: 0.75rem; }
+.news-card__text { color: var(--mid); font-size: 0.95rem; white-space: pre-wrap; }
+.news__empty { text-align: center; color: var(--light); font-size: 1.05rem; padding: 4rem 1rem; grid-column: 1 / -1; }
+
+/* FOOTER */
+.footer { background: #111; padding: 4rem 0 2rem; }
+.footer__top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 2rem; }
+.footer__brand-icon { color: var(--red); display: block; margin-bottom: 0.75rem; }
+.footer__brand strong { color: #fff; font-size: 1rem; display: block; margin-bottom: 0.5rem; }
+.footer__brand p { color: rgba(255,255,255,0.35); font-size: 0.78rem; line-height: 1.8; }
+.footer__links h5 { color: rgba(255,255,255,0.5); font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1rem; }
+.footer__links a { display: block; color: rgba(255,255,255,0.55); font-size: 0.85rem; text-decoration: none; margin-bottom: 0.5rem; transition: color 0.2s; }
+.footer__links a:hover { color: var(--red); }
+.footer__bottom { text-align: center; color: rgba(255,255,255,0.2); font-size: 0.75rem; line-height: 2; }
+.footer__admin { display: inline-block; margin-top: 1rem; padding: 0.5rem 1.25rem; border: 1px solid rgba(255,255,255,0.18); border-radius: var(--radius); color: rgba(255,255,255,0.55); font-size: 0.78rem; letter-spacing: 0.04em; text-decoration: none; transition: all 0.2s; }
+.footer__admin:hover { border-color: var(--red); color: var(--red); }
+
+@media (max-width: 860px) {
+  .nav__links { display: none; }
+  .nav__burger { display: flex; }
+  .news__grid { grid-template-columns: 1fr; }
+  .footer__top { grid-template-columns: 1fr 1fr; gap: 2rem 1.5rem; }
+}
+@media (max-width: 560px) {
+  .nav { padding: 0.9rem 1.25rem; }
+  .footer__top { grid-template-columns: 1fr; }
+  .footer__brand { grid-column: 1 / -1; }
+}
+  </style>
+</head>
+<body>
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <a href="index.html" class="nav__logo">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--red)"><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5"/></svg>
+      <span>Ideal Kitchens</span>
+    </a>
+    <ul class="nav__links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="news.html" style="color:var(--red)">News</a></li>
+      <li><a href="whyus.html">Why Us</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="contact.html#order" class="nav__cta">Order Now</a></li>
+    </ul>
+    <button class="nav__burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="about.html" class="mm-link">About</a></li>
+      <li><a href="services.html" class="mm-link">Services</a></li>
+      <li><a href="gallery.html" class="mm-link">Gallery</a></li>
+      <li><a href="news.html" class="mm-link">News</a></li>
+      <li><a href="whyus.html" class="mm-link">Why Us</a></li>
+      <li><a href="contact.html" class="mm-link">Contact</a></li>
+      <li><a href="contact.html#order" class="mm-link">Order Now</a></li>
+    </ul>
+  </div>
+
+  <!-- NEWS -->
+  <section class="news">
+    <div class="container">
+      <div class="section-header">
+        <span class="label">Newsroom</span>
+        <h2 class="section-title">News &amp; Updates</h2>
+        <p class="section-sub">Completed projects, new services and announcements from the Ideal Kitchens team.</p>
+      </div>
+      <div class="news__grid" id="newsGrid">
+        <p class="news__empty">Loading updates&hellip;</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <svg class="footer__brand-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="1.5"><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5"/></svg>
+          <strong>Ideal Kitchens Wardrobe &amp; Hardware Ltd</strong>
+          <p>Registration No. 130988 &middot; Established 2015</p>
+          <p>"Our Services are Ideal &amp; Effective"</p>
+        </div>
+        <div class="footer__links">
+          <h5>Services</h5>
+          <a href="services.html">Kitchen Units</a>
+          <a href="services.html">Wardrobes</a>
+          <a href="services.html">Bathroom Units</a>
+          <a href="services.html">Metal Fabrication</a>
+          <a href="services.html">Plumbing</a>
+        </div>
+        <div class="footer__links">
+          <h5>Company</h5>
+          <a href="about.html">About Us</a>
+          <a href="gallery.html">Gallery</a>
+          <a href="news.html">News</a>
+          <a href="whyus.html">Why Choose Us</a>
+          <a href="contact.html">Contact Us</a>
+        </div>
+        <div class="footer__links">
+          <h5>Contact</h5>
+          <a href="tel:+260967864650">+260 967 864 650</a>
+          <a href="tel:+260979781964">+260 979 781 964</a>
+          <a href="mailto:simunza@ideal-kitchenzm.com">simunza@ideal-kitchenzm.com</a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2025 Ideal Kitchens Wardrobe &amp; Hardware Ltd. All rights reserved.</p>
+        <p>Director: Choolwe Simuunza &middot; Banking: FNB PHI Lusaka Branch</p>
+        <a href="admin.html" class="footer__admin">&#128274; Admin &middot; Manage Site</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // NAV scroll + burger
+    const burger = document.getElementById('burger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    let menuOpen = false;
+    burger.addEventListener('click', () => {
+      menuOpen = !menuOpen;
+      mobileMenu.classList.toggle('open', menuOpen);
+      document.body.style.overflow = menuOpen ? 'hidden' : '';
+    });
+    document.querySelectorAll('.mm-link').forEach(l => l.addEventListener('click', () => {
+      menuOpen = false; mobileMenu.classList.remove('open'); document.body.style.overflow = '';
+    }));
+
+    // Render news
+    function fmtDate(d) {
+      if (!d) return '';
+      const dt = new Date(d);
+      if (isNaN(dt)) return d;
+      return dt.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+    }
+    async function renderNews() {
+      const grid = document.getElementById('newsGrid');
+      let data = null;
+      try {
+        const r = await fetch('data/news.json?v=' + Date.now(), { cache: 'no-store' });
+        if (r.ok) data = await r.json();
+      } catch (e) { console.warn('news load failed', e); }
+      grid.innerHTML = '';
+      if (!Array.isArray(data) || data.length === 0) {
+        const p = document.createElement('p');
+        p.className = 'news__empty';
+        p.textContent = 'No news posted yet. Check back soon for updates on our latest projects.';
+        grid.appendChild(p);
+        return;
+      }
+      // newest first: sort by date desc when present, else keep given order
+      data.sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
+      data.forEach(post => {
+        const card = document.createElement('article');
+        card.className = 'news-card';
+        if (post.image) {
+          const img = document.createElement('img');
+          img.className = 'news-card__img';
+          img.src = post.image; img.alt = post.title || ''; img.loading = 'lazy';
+          card.appendChild(img);
+        }
+        const body = document.createElement('div');
+        body.className = 'news-card__body';
+        const meta = document.createElement('div');
+        meta.className = 'news-card__meta';
+        if (post.category) {
+          const cat = document.createElement('span');
+          cat.className = 'news-card__cat';
+          cat.textContent = post.category;
+          meta.appendChild(cat);
+        }
+        if (post.date) {
+          const dt = document.createElement('span');
+          dt.textContent = fmtDate(post.date);
+          meta.appendChild(dt);
+        }
+        if (meta.children.length) body.appendChild(meta);
+        const h = document.createElement('h3');
+        h.className = 'news-card__title';
+        h.textContent = post.title || 'Untitled';
+        body.appendChild(h);
+        const txt = document.createElement('p');
+        txt.className = 'news-card__text';
+        txt.textContent = post.body || '';
+        body.appendChild(txt);
+        card.appendChild(body);
+        grid.appendChild(card);
+      });
+    }
+    renderNews();
+  </script>
+</body>
+</html>

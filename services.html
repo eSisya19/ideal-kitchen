@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Services — Ideal Kitchens Wardrobe & Hardware Ltd</title>
+  <meta name="description" content="Kitchens, wardrobes, bathrooms, metal fabrication, plumbing and interior design services." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- NAV -->
+  <nav class="nav scrolled" id="nav">
+    <a href="index.html" class="nav__logo">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--red)"><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5"/></svg>
+      <span>Ideal Kitchens</span>
+    </a>
+    <ul class="nav__links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html" style="color:var(--red)">Services</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="news.html">News</a></li>
+      <li><a href="whyus.html">Why Us</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="contact.html#order" class="nav__cta">Order Now</a></li>
+    </ul>
+    <button class="nav__burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="about.html" class="mm-link">About</a></li>
+      <li><a href="services.html" class="mm-link">Services</a></li>
+      <li><a href="gallery.html" class="mm-link">Gallery</a></li>
+      <li><a href="news.html" class="mm-link">News</a></li>
+      <li><a href="whyus.html" class="mm-link">Why Us</a></li>
+      <li><a href="contact.html" class="mm-link">Contact</a></li>
+      <li><a href="contact.html#order" class="mm-link">Order Now</a></li>
+    </ul>
+  </div>
+
+  <section class="services" id="services">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="label">What We Offer</span>
+        <h2 class="section-title">Our Services</h2>
+      </div>
+      <div class="services__grid" id="servicesGrid"></div>
+    </div>
+  </section>
+
+  <section class="materials">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="label">Materials &amp; Finishes</span>
+        <h2 class="section-title">Quality in Every Layer</h2>
+      </div>
+      <div class="materials__grid">
+        <div class="mat-card reveal">
+          <div class="mat-card__swatch" style="background: linear-gradient(135deg,#e63946,#c1121f);"></div>
+          <h4>Lacquer</h4>
+          <p>High-gloss finish in any colour. Moisture-resistant E1-class MDF carcass. Easy to clean.</p>
+        </div>
+        <div class="mat-card reveal">
+          <div class="mat-card__swatch" style="background: linear-gradient(135deg,#6b7280,#374151);"></div>
+          <h4>PVC</h4>
+          <p>Durable matte finish with MFC carcass. Strong and easy to clean with excellent design variety.</p>
+        </div>
+        <div class="mat-card reveal">
+          <div class="mat-card__swatch" style="background: linear-gradient(135deg,#d4a574,#c8956c);"></div>
+          <h4>Melamine</h4>
+          <p>Flat, smooth, water-resistant with UV edge branding. Ideal for large-scale projects.</p>
+        </div>
+        <div class="mat-card reveal">
+          <div class="mat-card__swatch" style="background: linear-gradient(135deg,#9ca3af,#6b7280);"></div>
+          <h4>Granite &amp; Stainless</h4>
+          <p>Premium material for worktops and staircase guiders. Long-lasting beauty and durability.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="modal" id="orderModal">
+    <div class="modal__box">
+      <button class="modal__close" onclick="closeModal()">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <h3>Quick Quote: <span id="modalService"></span></h3>
+      <p>Fill in your details and we'll reach out with a custom quote.</p>
+      <form onsubmit="submitModal(event)">
+        <div class="form__group">
+          <label>Your Name *</label>
+          <input type="text" id="mName" required placeholder="Full name" />
+        </div>
+        <div class="form__group">
+          <label>Phone Number *</label>
+          <input type="tel" id="mPhone" required placeholder="+260 9XX XXX XXX" />
+        </div>
+        <div class="form__group">
+          <label>Brief Description</label>
+          <textarea id="mDesc" rows="3" placeholder="Tell us a bit about what you need..."></textarea>
+        </div>
+        <button type="submit" class="btn btn--primary btn--full">Send Request</button>
+      </form>
+    </div>
+  </div>
+  <div class="modal__overlay" id="modalOverlay" onclick="closeModal()"></div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <svg class="footer__brand-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="1.5"><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5"/></svg>
+          <strong>Ideal Kitchens Wardrobe &amp; Hardware Ltd</strong>
+          <p>Registration No. 130988 &middot; Established 2015</p>
+          <p>"Our Services are Ideal &amp; Effective"</p>
+        </div>
+        <div class="footer__links">
+          <h5>Services</h5>
+          <a href="services.html">Kitchen Units</a>
+          <a href="services.html">Wardrobes</a>
+          <a href="services.html">Bathroom Units</a>
+          <a href="services.html">Metal Fabrication</a>
+          <a href="services.html">Plumbing</a>
+        </div>
+        <div class="footer__links">
+          <h5>Company</h5>
+          <a href="about.html">About Us</a>
+          <a href="gallery.html">Gallery</a>
+          <a href="news.html">News</a>
+          <a href="whyus.html">Why Choose Us</a>
+          <a href="contact.html">Contact Us</a>
+        </div>
+        <div class="footer__links">
+          <h5>Contact</h5>
+          <a href="tel:+260967864650">+260 967 864 650</a>
+          <a href="tel:+260979781964">+260 979 781 964</a>
+          <a href="mailto:simunza@ideal-kitchenzm.com">simunza@ideal-kitchenzm.com</a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2025 Ideal Kitchens Wardrobe &amp; Hardware Ltd. All rights reserved.</p>
+        <p>Director: Choolwe Simuunza &middot; Banking: FNB PHI Lusaka Branch</p>
+        <a href="admin.html" class="footer__admin">&#128274; Admin &middot; Manage Site</a>
+      </div>
+    </div>
+  </footer>
+  <script src="site.js"></script>
+</body>
+</html>

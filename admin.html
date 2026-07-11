@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin — Ideal Kitchens</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body { background: var(--cream); }
+    .admin-top { position: sticky; top: 0; z-index: 50; background: #111; color: #fff; padding: 1rem 1.5rem; display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+    .admin-top .brand { font-family: var(--font-display); font-size: 1.2rem; font-weight: 600; }
+    .admin-top .brand span { color: var(--red); }
+    .admin-top .spacer { flex: 1; }
+    .admin-wrap { max-width: 1080px; margin: 0 auto; padding: 2rem 1.5rem 5rem; }
+    .tabs { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 2rem; border-bottom: 1px solid var(--border); }
+    .tab { padding: 0.7rem 1.3rem; background: none; border: none; border-bottom: 2px solid transparent; font-family: var(--font-body); font-size: 0.9rem; font-weight: 500; color: var(--mid); cursor: pointer; letter-spacing: 0.03em; }
+    .tab.active { color: var(--red); border-bottom-color: var(--red); }
+    .panel { display: none; }
+    .panel.active { display: block; }
+    .card { background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem; margin-bottom: 1.25rem; }
+    .row { display: grid; grid-template-columns: 120px 1fr; gap: 1.25rem; }
+    .row .thumb { width: 120px; height: 120px; object-fit: cover; border-radius: 6px; background: #ece5db; border: 1px solid var(--border); display: block; }
+    .fields { display: flex; flex-direction: column; gap: 0.6rem; }
+    .fld { display: flex; flex-direction: column; gap: 0.25rem; }
+    .fld label { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--light); }
+    .fld input[type=text], .fld textarea, .fld select { width: 100%; padding: 0.55rem 0.7rem; border: 1px solid var(--border); border-radius: var(--radius); font-family: var(--font-body); font-size: 0.9rem; background: #fff; color: var(--charcoal); }
+    .fld textarea { resize: vertical; min-height: 70px; }
+    .inline { display: flex; gap: 1.25rem; flex-wrap: wrap; align-items: center; }
+    .card__actions { display: flex; gap: 0.5rem; margin-top: 0.9rem; flex-wrap: wrap; }
+    .mini { padding: 0.4rem 0.85rem; font-size: 0.78rem; border: 1px solid var(--border); background: #fff; border-radius: var(--radius); cursor: pointer; color: var(--mid); font-family: var(--font-body); }
+    .mini:hover { border-color: var(--charcoal); color: var(--charcoal); }
+    .mini--danger:hover { border-color: var(--red); color: var(--red); }
+    .btn-add { display: inline-block; padding: 0.7rem 1.4rem; background: var(--charcoal); color: #fff; border: none; border-radius: var(--radius); cursor: pointer; font-family: var(--font-body); font-size: 0.85rem; letter-spacing: 0.05em; }
+    .btn-publish { padding: 0.7rem 1.6rem; background: var(--red); color: #fff; border: none; border-radius: var(--radius); cursor: pointer; font-family: var(--font-body); font-size: 0.85rem; font-weight: 500; letter-spacing: 0.05em; }
+    .btn-publish:disabled { opacity: 0.5; cursor: not-allowed; }
+    .status { font-size: 0.82rem; padding: 0.5rem 0.9rem; border-radius: var(--radius); }
+    .status.ok { background: #e6f6ec; color: #1b7a3d; }
+    .status.err { background: #fdecec; color: #b3261e; }
+    .note { font-size: 0.82rem; color: var(--mid); line-height: 1.7; }
+    .note code { background: #f0ebe3; padding: 0.1rem 0.35rem; border-radius: 3px; font-size: 0.85em; }
+    .gate { position: fixed; inset: 0; background: var(--charcoal); z-index: 200; display: flex; align-items: center; justify-content: center; padding: 1.5rem; }
+    .gate__box { background: #fff; border-radius: 10px; padding: 2.5rem; width: 100%; max-width: 380px; text-align: center; }
+    .gate__box h2 { font-family: var(--font-display); font-size: 1.8rem; margin-bottom: 0.5rem; }
+    .gate__box p { color: var(--mid); font-size: 0.9rem; margin-bottom: 1.5rem; }
+    .gate__box input { width: 100%; padding: 0.7rem; border: 1px solid var(--border); border-radius: var(--radius); margin-bottom: 1rem; font-size: 1rem; text-align: center; }
+    .gate__err { color: var(--red); font-size: 0.85rem; min-height: 1.2em; margin-bottom: 0.75rem; }
+    .hidden { display: none !important; }
+    .tok-state { font-size: 0.82rem; padding: 0.35rem 0.7rem; border-radius: 20px; }
+    .tok-state.on { background: #e6f6ec; color: #1b7a3d; }
+    .tok-state.off { background: #fdecec; color: #b3261e; }
+    @media (max-width: 560px) { .row { grid-template-columns: 1fr; } .row .thumb { width: 100%; height: 180px; } }
+  </style>
+</head>
+<body>
+  <!-- PASSWORD GATE -->
+  <div class="gate" id="gate">
+    <div class="gate__box">
+      <h2>Admin Access</h2>
+      <p>Enter the admin password to manage the website.</p>
+      <input type="password" id="gatePass" placeholder="Password" autocomplete="off" />
+      <div class="gate__err" id="gateErr"></div>
+      <button class="btn-publish" style="width:100%" id="gateBtn">Unlock</button>
+    </div>
+  </div>
+
+  <!-- APP -->
+  <div id="app" class="hidden">
+    <div class="admin-top">
+      <span class="brand">Ideal <span>Kitchens</span> Admin</span>
+      <span class="tok-state off" id="tokState">Not connected</span>
+      <div class="spacer"></div>
+      <span class="status" id="status"></span>
+      <button class="btn-publish" id="publishBtn">Publish changes</button>
+      <a href="index.html" class="mini" style="text-decoration:none">View site</a>
+    </div>
+
+    <div class="admin-wrap">
+      <div class="tabs">
+        <button class="tab active" data-tab="gallery">Gallery</button>
+        <button class="tab" data-tab="services">Services</button>
+        <button class="tab" data-tab="news">News</button>
+        <button class="tab" data-tab="settings">Settings</button>
+      </div>
+
+      <div class="panel active" id="panel-gallery">
+        <div id="list-gallery"></div>
+        <button class="btn-add" onclick="addGallery()">+ Add gallery item</button>
+      </div>
+
+      <div class="panel" id="panel-services">
+        <div id="list-services"></div>
+        <button class="btn-add" onclick="addService()">+ Add service</button>
+      </div>
+
+      <div class="panel" id="panel-news">
+        <div id="list-news"></div>
+        <button class="btn-add" onclick="addNews()">+ Add news post</button>
+      </div>
+
+      <div class="panel" id="panel-settings">
+        <div class="card">
+          <div class="fld">
+            <label>GitHub Access Token (fine-grained)</label>
+            <input type="password" id="tokenInput" placeholder="github_pat_..." autocomplete="off" />
+          </div>
+          <div class="card__actions">
+            <button class="mini" onclick="saveToken()">Save token</button>
+            <button class="mini mini--danger" onclick="clearToken()">Remove token</button>
+          </div>
+          <p class="note" style="margin-top:1rem">
+            Your changes are saved into the <code>data/</code> folder of the
+            <code>eSisya19/ideal-kitchen</code> repository. To allow that, create a
+            <strong>fine-grained personal access token</strong>:
+          </p>
+          <p class="note">
+            1. Go to GitHub &rarr; Settings &rarr; Developer settings &rarr;
+            <em>Fine-grained tokens</em> &rarr; <em>Generate new token</em>.<br />
+            2. Under <strong>Repository access</strong>, select only <code>ideal-kitchen</code>.<br />
+            3. Under <strong>Permissions &rarr; Repository permissions</strong>, set
+            <code>Contents</code> to <strong>Read and write</strong>.<br />
+            4. Generate the token, copy it, paste it above and click <em>Save token</em>.
+          </p>
+          <p class="note">The token is stored only in this browser (never uploaded to the site). After publishing, the live website updates within about a minute.</p>
+        </div>
+        <div class="card">
+          <p class="note"><strong>Change the admin password:</strong> open <code>admin.html</code> and edit the <code>ADMIN_PASSWORD</code> value near the top of the script, then re-publish the file. (This password is basic protection only — keep the admin URL private.)</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /* ============================================================
+       CONFIG — change ADMIN_PASSWORD to your own value.
+       ============================================================ */
+    const ADMIN_PASSWORD = 'idealkitchens';
+    const OWNER  = 'eSisya19';
+    const REPO   = 'ideal-kitchen';
+    const BRANCH = 'main';
+    const TOKEN_KEY = 'ik_gh_token';
+
+    const state = { gallery: [], services: [], news: [] };
+
+    /* ---------- Password gate ---------- */
+    const gate = document.getElementById('gate');
+    const app = document.getElementById('app');
+    function unlock() { gate.classList.add('hidden'); app.classList.remove('hidden'); sessionStorage.setItem('ik_admin_ok', '1'); init(); }
+    function tryUnlock() {
+      const v = document.getElementById('gatePass').value;
+      if (v === ADMIN_PASSWORD) { unlock(); }
+      else { document.getElementById('gateErr').textContent = 'Incorrect password.'; }
+    }
+    document.getElementById('gateBtn').addEventListener('click', tryUnlock);
+    document.getElementById('gatePass').addEventListener('keydown', e => { if (e.key === 'Enter') tryUnlock(); });
+    if (sessionStorage.getItem('ik_admin_ok') === '1') unlock();
+
+    /* ---------- Tabs ---------- */
+    document.querySelectorAll('.tab').forEach(t => t.addEventListener('click', () => {
+      document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
+      document.querySelectorAll('.panel').forEach(x => x.classList.remove('active'));
+      t.classList.add('active');
+      document.getElementById('panel-' + t.dataset.tab).classList.add('active');
+    }));
+
+    /* ---------- Token ---------- */
+    function token() { return localStorage.getItem(TOKEN_KEY) || ''; }
+    function refreshTokState() {
+      const el = document.getElementById('tokState');
+      if (token()) { el.textContent = 'Connected to GitHub'; el.className = 'tok-state on'; }
+      else { el.textContent = 'Not connected'; el.className = 'tok-state off'; }
+    }
+    function saveToken() {
+      const v = document.getElementById('tokenInput').value.trim();
+      if (!v) return;
+      localStorage.setItem(TOKEN_KEY, v);
+      document.getElementById('tokenInput').value = '';
+      refreshTokState();
+      setStatus('Token saved.', 'ok');
+    }
+    function clearToken() { localStorage.removeItem(TOKEN_KEY); refreshTokState(); setStatus('Token removed.', 'ok'); }
+
+    /* ---------- Status ---------- */
+    let statusTimer = null;
+    function setStatus(msg, kind) {
+      const el = document.getElementById('status');
+      el.textContent = msg || '';
+      el.className = 'status' + (kind ? ' ' + kind : '');
+      if (statusTimer) clearTimeout(statusTimer);
+      if (kind === 'ok') statusTimer = setTimeout(() => { el.textContent = ''; el.className = 'status'; }, 6000);
+    }
+
+    /* ---------- Load current data ---------- */
+    async function loadJSON(path) {
+      try { const r = await fetch(path + '?v=' + Date.now(), { cache: 'no-store' }); if (r.ok) return await r.json(); } catch (e) {}
+      return [];
+    }
+    async function init() {
+      refreshTokState();
+      state.gallery = await loadJSON('data/gallery.json');
+      state.services = await loadJSON('data/services.json');
+      state.news = await loadJSON('data/news.json');
+      if (!Array.isArray(state.gallery)) state.gallery = [];
+      if (!Array.isArray(state.services)) state.services = [];
+      if (!Array.isArray(state.news)) state.news = [];
+      renderGalleryList(); renderServiceList(); renderNewsList();
+    }
+
+    /* ---------- Helpers ---------- */
+    const DEFAULT_ICON = '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5"/></svg>';
+    function imgSrc(image) {
+      if (!image) return '';
+      return (typeof image === 'object') ? image.dataUrl : image;
+    }
+    function pickImage(onPicked) {
+      const inp = document.createElement('input');
+      inp.type = 'file'; inp.accept = 'image/*';
+      inp.addEventListener('change', () => {
+        const f = inp.files[0]; if (!f) return;
+        const reader = new FileReader();
+        reader.onload = () => {
+          let ext = (f.name.split('.').pop() || 'jpg').toLowerCase();
+          if (!/^(jpg|jpeg|png|webp|gif)$/.test(ext)) ext = 'jpg';
+          if (ext === 'jpeg') ext = 'jpg';
+          onPicked({ _new: true, dataUrl: reader.result, ext });
+        };
+        reader.readAsDataURL(f);
+      });
+      inp.click();
+    }
+    function move(arr, i, dir) {
+      const j = i + dir;
+      if (j < 0 || j >= arr.length) return;
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+
+    /* ---------- GALLERY editor ---------- */
+    function renderGalleryList() {
+      const wrap = document.getElementById('list-gallery');
+      wrap.innerHTML = '';
+      state.gallery.forEach((g, i) => {
+        const card = document.createElement('div'); card.className = 'card';
+        const row = document.createElement('div'); row.className = 'row';
+        const thumb = document.createElement('img'); thumb.className = 'thumb'; thumb.src = imgSrc(g.image); thumb.alt = '';
+        const fields = document.createElement('div'); fields.className = 'fields';
+        fields.appendChild(textField('Title', g.title || '', v => g.title = v));
+        fields.appendChild(textField('Caption', g.caption || '', v => g.caption = v));
+        fields.appendChild(textField('Order button target (service name)', g.order || '', v => g.order = v));
+        const inline = document.createElement('div'); inline.className = 'inline';
+        inline.appendChild(checkField('Large tile', !!g.large, v => g.large = v));
+        fields.appendChild(inline);
+        row.appendChild(thumb); row.appendChild(fields);
+        card.appendChild(row);
+        card.appendChild(actions([
+          ['Replace image', () => pickImage(img => { g.image = img; renderGalleryList(); })],
+          ['Move up', () => { move(state.gallery, i, -1); renderGalleryList(); }],
+          ['Move down', () => { move(state.gallery, i, 1); renderGalleryList(); }],
+          ['Delete', () => { if (confirm('Delete this gallery item?')) { state.gallery.splice(i, 1); renderGalleryList(); } }, true],
+        ]));
+        wrap.appendChild(card);
+      });
+    }
+    function addGallery() { state.gallery.unshift({ title: 'New project', caption: '', order: '', large: false, image: '' }); renderGalleryList(); }
+
+    /* ---------- SERVICES editor ---------- */
+    function renderServiceList() {
+      const wrap = document.getElementById('list-services');
+      wrap.innerHTML = '';
+      state.services.forEach((s, i) => {
+        const card = document.createElement('div'); card.className = 'card';
+        const row = document.createElement('div'); row.className = 'row';
+        const thumb = document.createElement('img'); thumb.className = 'thumb'; thumb.src = imgSrc(s.image); thumb.alt = '';
+        const fields = document.createElement('div'); fields.className = 'fields';
+        fields.appendChild(textField('Number label (e.g. 01)', s.num || '', v => s.num = v));
+        fields.appendChild(textField('Title', s.title || '', v => s.title = v));
+        fields.appendChild(areaField('Description', s.desc || '', v => s.desc = v));
+        fields.appendChild(textField('Tags (comma separated)', (s.tags || []).join(', '), v => s.tags = v.split(',').map(x => x.trim()).filter(Boolean)));
+        fields.appendChild(textField('Order button target (service name)', s.order || '', v => s.order = v));
+        row.appendChild(thumb); row.appendChild(fields);
+        card.appendChild(row);
+        card.appendChild(actions([
+          ['Replace image', () => pickImage(img => { s.image = img; renderServiceList(); })],
+          ['Move up', () => { move(state.services, i, -1); renderServiceList(); }],
+          ['Move down', () => { move(state.services, i, 1); renderServiceList(); }],
+          ['Delete', () => { if (confirm('Delete this service?')) { state.services.splice(i, 1); renderServiceList(); } }, true],
+        ]));
+        wrap.appendChild(card);
+      });
+    }
+    function addService() { state.services.unshift({ num: '', title: 'New service', desc: '', tags: [], order: '', icon: DEFAULT_ICON, image: '' }); renderServiceList(); }
+
+    /* ---------- NEWS editor ---------- */
+    function renderNewsList() {
+      const wrap = document.getElementById('list-news');
+      wrap.innerHTML = '';
+      state.news.forEach((n, i) => {
+        const card = document.createElement('div'); card.className = 'card';
+        const row = document.createElement('div'); row.className = 'row';
+        const thumb = document.createElement('img'); thumb.className = 'thumb'; thumb.src = imgSrc(n.image); thumb.alt = '';
+        const fields = document.createElement('div'); fields.className = 'fields';
+        fields.appendChild(textField('Title', n.title || '', v => n.title = v));
+        const inline = document.createElement('div'); inline.className = 'inline';
+        inline.appendChild(textField('Category', n.category || '', v => n.category = v));
+        inline.appendChild(dateField('Date', n.date || '', v => n.date = v));
+        fields.appendChild(inline);
+        fields.appendChild(areaField('Body', n.body || '', v => n.body = v));
+        row.appendChild(thumb); row.appendChild(fields);
+        card.appendChild(row);
+        card.appendChild(actions([
+          ['Set / replace image', () => pickImage(img => { n.image = img; renderNewsList(); })],
+          ['Remove image', () => { n.image = ''; renderNewsList(); }],
+          ['Move up', () => { move(state.news, i, -1); renderNewsList(); }],
+          ['Move down', () => { move(state.news, i, 1); renderNewsList(); }],
+          ['Delete', () => { if (confirm('Delete this post?')) { state.news.splice(i, 1); renderNewsList(); } }, true],
+        ]));
+        wrap.appendChild(card);
+      });
+    }
+    function addNews() {
+      const today = new Date().toISOString().slice(0, 10);
+      state.news.unshift({ id: 'post-' + Date.now(), title: 'New update', category: 'Update', date: today, body: '', image: '' });
+      renderNewsList();
+    }
+
+    /* ---------- Field builders ---------- */
+    function textField(label, val, onChange) {
+      const f = document.createElement('div'); f.className = 'fld';
+      const l = document.createElement('label'); l.textContent = label;
+      const inp = document.createElement('input'); inp.type = 'text'; inp.value = val;
+      inp.addEventListener('input', () => onChange(inp.value));
+      f.appendChild(l); f.appendChild(inp); return f;
+    }
+    function areaField(label, val, onChange) {
+      const f = document.createElement('div'); f.className = 'fld';
+      const l = document.createElement('label'); l.textContent = label;
+      const inp = document.createElement('textarea'); inp.value = val;
+      inp.addEventListener('input', () => onChange(inp.value));
+      f.appendChild(l); f.appendChild(inp); return f;
+    }
+    function dateField(label, val, onChange) {
+      const f = document.createElement('div'); f.className = 'fld';
+      const l = document.createElement('label'); l.textContent = label;
+      const inp = document.createElement('input'); inp.type = 'date'; inp.value = val;
+      inp.addEventListener('input', () => onChange(inp.value));
+      f.appendChild(l); f.appendChild(inp); return f;
+    }
+    function checkField(label, val, onChange) {
+      const f = document.createElement('label'); f.className = 'fld'; f.style.flexDirection = 'row'; f.style.alignItems = 'center'; f.style.gap = '0.4rem';
+      const inp = document.createElement('input'); inp.type = 'checkbox'; inp.checked = val;
+      inp.addEventListener('change', () => onChange(inp.checked));
+      const span = document.createElement('span'); span.textContent = label; span.style.fontSize = '0.85rem';
+      f.appendChild(inp); f.appendChild(span); return f;
+    }
+    function actions(items) {
+      const wrap = document.createElement('div'); wrap.className = 'card__actions';
+      items.forEach(([label, fn, danger]) => {
+        const b = document.createElement('button');
+        b.className = 'mini' + (danger ? ' mini--danger' : '');
+        b.textContent = label; b.addEventListener('click', fn);
+        wrap.appendChild(b);
+      });
+      return wrap;
+    }
+
+    /* ---------- Publish to GitHub ---------- */
+    function utf8ToB64(str) {
+      const bytes = new TextEncoder().encode(str);
+      let bin = '';
+      const chunk = 0x8000;
+      for (let i = 0; i < bytes.length; i += chunk) bin += String.fromCharCode.apply(null, bytes.subarray(i, i + chunk));
+      return btoa(bin);
+    }
+    function authHeaders() {
+      return { 'Authorization': 'Bearer ' + token(), 'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28' };
+    }
+    async function getSha(path) {
+      const r = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${path}?ref=${BRANCH}`, { headers: authHeaders(), cache: 'no-store' });
+      if (r.status === 200) return (await r.json()).sha;
+      if (r.status === 404) return null;
+      throw new Error('Could not read ' + path + ' (HTTP ' + r.status + ')');
+    }
+    async function putFile(path, contentB64, message) {
+      const sha = await getSha(path);
+      const body = { message, content: contentB64, branch: BRANCH };
+      if (sha) body.sha = sha;
+      const r = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${path}`, {
+        method: 'PUT', headers: authHeaders(), body: JSON.stringify(body)
+      });
+      if (!r.ok) throw new Error('Failed to save ' + path + ' (HTTP ' + r.status + ') ' + (await r.text()).slice(0, 140));
+    }
+    function stripTemp(arr) {
+      return arr.map(o => { const c = Object.assign({}, o); if (c.image && typeof c.image === 'object') c.image = ''; return c; });
+    }
+    async function publish() {
+      if (!token()) { setStatus('Add your GitHub token in Settings first.', 'err'); document.querySelector('[data-tab=settings]').click(); return; }
+      const btn = document.getElementById('publishBtn'); btn.disabled = true;
+      setStatus('Publishing…');
+      try {
+        // 1. Commit any newly-uploaded images, then swap the path in.
+        for (const [type, arr] of [['gallery', state.gallery], ['service', state.services], ['news', state.news]]) {
+          for (const item of arr) {
+            if (item.image && typeof item.image === 'object' && item.image._new) {
+              const name = `data/uploads/${type}-${Date.now()}-${Math.floor(Math.random() * 1e6)}.${item.image.ext}`;
+              await putFile(name, item.image.dataUrl.split(',')[1], 'admin: upload ' + name);
+              item.image = name;
+            }
+          }
+        }
+        // 2. Commit the JSON data files.
+        await putFile('data/gallery.json', utf8ToB64(JSON.stringify(state.gallery, null, 2)), 'admin: update gallery');
+        await putFile('data/services.json', utf8ToB64(JSON.stringify(state.services, null, 2)), 'admin: update services');
+        await putFile('data/news.json', utf8ToB64(JSON.stringify(state.news, null, 2)), 'admin: update news');
+        renderGalleryList(); renderServiceList(); renderNewsList();
+        setStatus('Published! The live site will update within ~1 minute.', 'ok');
+      } catch (e) {
+        setStatus(e.message, 'err');
+      } finally {
+        btn.disabled = false;
+      }
+    }
+    document.getElementById('publishBtn').addEventListener('click', publish);
+  </script>
+</body>
+</html>
