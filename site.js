@@ -95,23 +95,23 @@ async function renderServices() {
   const data = await loadJSON('data/services.json');
   if (!Array.isArray(data)) return;
   grid.innerHTML = '';
-  data.forEach((s, i) => {
+  data.forEach((s) => {
     const card = document.createElement('div'); card.className = 'service-card reveal';
     const wrap = document.createElement('div'); wrap.className = 'service-card__img';
     if (s.image) { const img = document.createElement('img'); img.src = s.image; img.alt = s.title || ''; img.loading = 'lazy'; wrap.appendChild(img); }
     card.appendChild(wrap);
-    const num = document.createElement('div'); num.className = 'service-card__num'; num.textContent = s.num || String(i + 1).padStart(2, '0'); card.appendChild(num);
-    if (s.icon) { const ic = document.createElement('div'); ic.className = 'service-card__icon icon'; ic.innerHTML = s.icon; card.appendChild(ic); }
-    const h3 = document.createElement('h3'); h3.textContent = s.title || ''; card.appendChild(h3);
-    const p = document.createElement('p'); p.textContent = s.desc || ''; card.appendChild(p);
+    const body = document.createElement('div'); body.className = 'service-card__body';
+    const h3 = document.createElement('h3'); h3.className = 'service-card__title'; h3.textContent = s.title || ''; body.appendChild(h3);
+    const p = document.createElement('p'); p.className = 'service-card__text'; p.textContent = s.desc || ''; body.appendChild(p);
     if (Array.isArray(s.tags) && s.tags.length) {
       const tg = document.createElement('div'); tg.className = 'service-card__tags';
       s.tags.forEach(t => { const sp = document.createElement('span'); sp.textContent = t; tg.appendChild(sp); });
-      card.appendChild(tg);
+      body.appendChild(tg);
     }
     const btn = document.createElement('button'); btn.className = 'service-card__btn'; btn.innerHTML = 'Order This &rarr;';
     btn.addEventListener('click', () => openOrder(s.order || s.title || ''));
-    card.appendChild(btn);
+    body.appendChild(btn);
+    card.appendChild(body);
     grid.appendChild(card);
   });
   revealNew(grid);

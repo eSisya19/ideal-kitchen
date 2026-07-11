@@ -292,57 +292,19 @@ body {
 
 /* ===== SERVICES ===== */
 .services { padding: 7rem 0; background: var(--warm-white); }
-.services__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
-.service-card {
-  background: #fff;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 2rem;
-  position: relative;
-  overflow: hidden;
-  transition: var(--transition);
-}
-.service-card__img { margin: -2rem -2rem 1.25rem; height: 175px; overflow: hidden; }
-.service-card__img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .45s ease; filter: brightness(0.96); }
-.service-card:hover .service-card__img img { transform: scale(1.06); filter: brightness(1); }
-.service-card::before {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 3px;
-  background: var(--red);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.3s ease;
-}
-.service-card:hover { border-color: var(--red); transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.07); }
-.service-card:hover::before { transform: scaleX(1); }
-.service-card__num { font-family: var(--font-display); font-size: 3.5rem; font-weight: 700; color: rgba(0,0,0,0.05); line-height: 1; margin-bottom: -0.5rem; }
-.service-card__icon { font-size: 2rem; margin-bottom: 0.75rem; }
-.service-card h3 { font-family: var(--font-display); font-size: 1.4rem; font-weight: 600; margin-bottom: 0.75rem; }
-.service-card p { font-size: 0.88rem; color: var(--mid); line-height: 1.7; margin-bottom: 1rem; }
+/* Service cards — styled to match the News cards exactly */
+.services__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+.service-card { background: #fff; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.service-card:hover { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(0,0,0,0.08); }
+.service-card__img { width: 100%; aspect-ratio: 16 / 9; overflow: hidden; background: #ece5db; display: block; }
+.service-card__img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .45s ease; }
+.service-card:hover .service-card__img img { transform: scale(1.06); }
+.service-card__body { padding: 1.75rem; display: flex; flex-direction: column; flex: 1; }
+.service-card__title { font-family: var(--font-display); font-size: 1.55rem; font-weight: 600; line-height: 1.2; margin-bottom: 0.75rem; }
+.service-card__text { color: var(--mid); font-size: 0.95rem; line-height: 1.7; margin-bottom: 1rem; white-space: pre-wrap; }
 .service-card__tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.25rem; }
-.service-card__tags span {
-  font-size: 0.7rem;
-  font-weight: 500;
-  letter-spacing: 0.05em;
-  background: var(--cream);
-  color: var(--mid);
-  padding: 0.2rem 0.6rem;
-  border-radius: 20px;
-  border: 1px solid var(--border);
-}
-.service-card__btn {
-  background: none;
-  border: none;
-  color: var(--red);
-  font-size: 0.82rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  cursor: pointer;
-  padding: 0;
-  transition: gap 0.2s;
-}
+.service-card__tags span { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.05em; background: var(--cream); color: var(--mid); padding: 0.2rem 0.6rem; border-radius: 20px; border: 1px solid var(--border); }
+.service-card__btn { margin-top: auto; align-self: flex-start; background: none; border: none; color: var(--red); font-size: 0.82rem; font-weight: 600; letter-spacing: 0.06em; cursor: pointer; padding: 0; transition: letter-spacing 0.2s; }
 .service-card__btn:hover { letter-spacing: 0.12em; }
 
 /* ===== MATERIALS ===== */
